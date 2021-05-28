@@ -1,0 +1,14 @@
+{
+  "name": "erisify",
+  "version": "1.0.0",
+  "description": "A few small additions to Eris to make life easier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "eris": ">=0.15.0"
+  },
+  "author": "Exhabition",
+  "license": "MIT"
+}
