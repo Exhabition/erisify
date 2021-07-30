@@ -77,6 +77,6 @@ class MessageEmbed {
     }
 }
 
-module.exports = Eris => {
+module.exports.init = Eris => {
     Eris.MessageEmbed = MessageEmbed;
 };
