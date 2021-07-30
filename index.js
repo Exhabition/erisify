@@ -9,7 +9,7 @@ const additionsPath = path.join(__dirname, ".", "additions");
  * @param {Array} [options.disabled="none"] An array of disabled additions (ex. "Message.guild")
  * @param {Boolean} [options.logging=false] Enabled logging of adding additions
  */
-module.exports = async (Eris, options = {}) => {
+module.exports = async (Eris, options = { enabled: "all", disabled: "none", logging: false }) => {
     const additionsFolders = fs.readdirSync(additionsPath);
 
     for (const additionFolder of additionsFolders) {
@@ -17,15 +17,18 @@ module.exports = async (Eris, options = {}) => {
 
         const additions = fs.readdirSync(filePath).filter(file => file.endsWith(".js"));
         for (const addition of additions) {
-            if (!options.enabled?.includes(addition) && options.disabled?.includes(addition)) {
-                if (options.logging) console.log(`${filePath}.${addition} has been disabled`);
+            let additionName = `${additionFolder}.${addition}`;
+            additionName = additionName.substring(0, additionName.length - ".js".length);
+
+            if (!options.enabled?.includes(additionName) && options.disabled?.includes(additionName)) {
+                if (options.logging) console.log(`${additionName} has been disabled`);
                 continue;
             }
 
             const plugin = require(`${filePath}/${addition}`);
 
             plugin.init(Eris);
-            if (options.logging) console.log(`${filePath}.${addition} has been initialized`);
+            if (options.logging) console.log(`${additionName} has been initialized`);
         }
     }
 };
