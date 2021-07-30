@@ -8,6 +8,7 @@ const BUTTON_STYLES = {
 
 class MessageButton {
     constructor() {
+        this.disabled = false;
         this.type = 2;
 
         return this;
@@ -51,15 +52,15 @@ class MessageButton {
         return this;
     }
 
-    get disabled() {
+    get isDisabled() {
         return this.disabled;
     }
 
-    get valid() {
+    get isValid() {
         return true;
     }
 }
 
-module.exports = Eris => {
+module.exports.init = Eris => {
     Eris.MessageButton = MessageButton;
 };
