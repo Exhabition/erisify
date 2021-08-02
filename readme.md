@@ -58,11 +58,8 @@ require("erisify")(Eris, { disabled: ["Message.tag"] }, true);
 ```
 
 ## todo
-
 - [ ] fixy like the entire package owo
 - [ ] add useful stuff
-- [ ] add examples
 
 ## credits
-
 package inspired by `bsian03's` [pluris](https://github.com/bsian03/pluris) package
