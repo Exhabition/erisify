@@ -1,3 +1,5 @@
+const { addImport } = require("erisify/helper/prototype");
+
 const BUTTON_STYLES = {
     blurple: 1,
     grey: 2,
@@ -7,7 +9,7 @@ const BUTTON_STYLES = {
 };
 
 class MessageButton {
-    constructor() {
+    constructor(options = {}) {
         this.disabled = false;
         this.type = 2;
 
@@ -29,7 +31,7 @@ class MessageButton {
     }
 
     setLabel(label) {
-        this.label = label.toString().slice(80);
+        this.label = label.toString().slice(0, 80);
 
         return this;
     }
@@ -51,16 +53,8 @@ class MessageButton {
 
         return this;
     }
-
-    get isDisabled() {
-        return this.disabled;
-    }
-
-    get isValid() {
-        return true;
-    }
 }
 
 module.exports.init = Eris => {
-    Eris.MessageButton = MessageButton;
+    addImport(Eris, MessageButton);
 };
