@@ -10,4 +10,14 @@ module.exports = {
 
         Object.defineProperty(Eris[Class].prototype, func.name, isGetter ? { get: func } : { value: func });
     },
+
+    /**
+     * @param {import("eris")} Eris
+     * @param {Class} Class
+     */
+    addImport: function (Eris, Class) {
+        if (Eris[Class.name] !== undefined) return console.warn(`Eris.${Class.name} already exists, you can't overwrite it`);
+
+        Object.defineProperty(Eris, Class.name, { value: Class });
+    },
 };
