@@ -2,14 +2,19 @@ const fs = require("fs");
 const path = require("path");
 const additionsPath = path.join(__dirname, ".", "additions");
 
+let erisifyOptions = { enabled: "all", disabled: "none", logging: false, preventErrors: false };
+
 /**
  * @param {import("eris")} Eris
  * @param {Object} options
- * @param {Array} [options.enabled="all"] An array of enabled additions, enabling prioritizes over disabling (ex. "Message.guild")
- * @param {Array} [options.disabled="none"] An array of disabled additions (ex. "Message.guild")
- * @param {Boolean} [options.logging=false] Enabled logging of adding additions
+ * @param {Array} [options.enabled="all"] An array of enabled additions, enabling prioritizes over disabling (ex. ["Message.guild"])
+ * @param {Array} [options.disabled="none"] An array of disabled additions (ex. ["Message.guild"])
+ * @param {Boolean} [options.logging=false] Enable logging of adding additions
+ * @param {Boolean} [options.preventErrors=false] Try and fix errors such as making strings shorter instead of throwing an error if the string is too long
  */
-module.exports = async (Eris, options = { enabled: "all", disabled: "none", logging: false }) => {
+module.exports = async (Eris, options = erisifyOptions) => {
+    if (options !== erisifyOptions) erisifyOptions = options;
+
     const additionsFolders = fs.readdirSync(additionsPath);
 
     for (const additionFolder of additionsFolders) {
@@ -32,3 +37,5 @@ module.exports = async (Eris, options = { enabled: "all", disabled: "none", logg
         }
     }
 };
+
+module.exports.options = erisifyOptions;
