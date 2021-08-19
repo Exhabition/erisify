@@ -156,6 +156,8 @@ class MessageEmbed {
             }
         }
 
+        this.footer = tempFooter;
+
         return this;
     }
 
