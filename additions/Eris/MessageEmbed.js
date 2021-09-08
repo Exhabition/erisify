@@ -57,17 +57,31 @@ class MessageEmbed {
     }
 
     /**
-     * @param {Number|String} color Either a HEX string or number
+     * @param {Number|Array|String} color Either a HEX string, array with RGB values or number
      */
     setColor(color) {
         if (typeof color == "number") {
-            if (color > 0 && color < 16777215) this.color = color;
-            else throw new RangeError("[MessageEmbed.setColor] 'color' must be a number higher than 0 and lower than or equal to 16777216777215");
+            if (color > 0 && color < 16777215)
+                this.color = color;
+            else if (!this.options.preventErrors)
+                throw new RangeError("[MessageEmbed.setColor] 'color' must be a number higher than 0 and lower than or equal to 16777216777215");
+        } else if (Array.isArray(color)) {
+            if (color.length < 3 && !this.options.preventErrors)
+                throw new RangeError("[MessageEmbed.setColor] RGB arrays must be at least 3 items long");
+            else if (color.length < 3)
+                return this;
+
+            if (color.some(item => !Number.isInteger(item)) && !this.options.preventErrors)
+                throw new TypeError("[MessageEmbed.setColor] RGB values must be integers");
+            else if (color.some(item => !Number.isInteger(item)))
+                return this;
+
+            const [r, g, b] = color;
+
+            this.color = parseInt(((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1), 16);
         } else if (color.startsWith("#")) {
             this.color = parseInt(color.slice(1, color.length), 16);
-        } else {
-            throw new Error("[MessageEmbed.setColor] Invalid HEX string passed as 'color'");
-        }
+        } else if (!this.options.preventErrors) throw new Error("[MessageEmbed.setColor] Invalid HEX string passed as 'color'");
 
         return this;
     }
