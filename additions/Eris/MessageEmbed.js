@@ -143,9 +143,13 @@ class MessageEmbed {
     /**
      * @param {DateConstructor} [time]
      */
-    setTimestamp(time = Date.now()) {
-        if (time instanceof Date) time = time.getTime();
-        this.timestamp = time;
+    setTimestamp(time = new Date()) {
+        if (Number.isNaN(new Date(time).getTime())) {
+            if (!this.options.preventErrors) throw new Error("[MessageEmbed.setTimestamp] Invalid data passed");
+            else time = new Date();
+        }
+
+        this.timestamp = new Date(time);
 
         return this;
     }
