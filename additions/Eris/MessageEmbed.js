@@ -185,6 +185,8 @@ class MessageEmbed {
      * @param {Boolean} [inline=true]
      */
     addField(name, value, inline = false) {
+        if (Array.isArray(value)) value = value.join("\n");
+
         if (this.fields.length >= 25) {
             if (this.options.preventErrors) {
                 console.warn("[MessageEmbed.addField] A max of 25 fields are allowed, current field couldn't be added");
