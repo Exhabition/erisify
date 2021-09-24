@@ -6,6 +6,7 @@
   "description": "A few small additions to Eris to make life easier",
   "license": "MIT",
   "homepage": "https://github.com/Exhabition/erisify#readme",
+  "types": "./index.d.ts",
   "author": {
     "name": "Exhabition"
   },
