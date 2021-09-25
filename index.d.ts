@@ -1,4 +1,26 @@
 declare module "eris" {
+  interface Client {
+    userCount: number;
+  }
+
+  interface Member {
+    hoistColor: string;
+    tag: string;
+  }
+
+  interface User {
+    tag: string;
+  }
+  
+  interface Message {
+    guild: Guild;
+  }
+
+  interface Role {
+    higherThan(role: Role): boolean;
+    isHighest: boolean;
+  }
+
   class MessageEmbed {
     setAuthor(name: string, iconUrl?: string, url?: string): this;
     setColor(color: string | number | string[]): this;
@@ -14,6 +36,11 @@ declare module "eris" {
   }
 }
 
-declare function erisify(Eris: typeof import("eris")): void;
+declare function erisify(Eris: typeof import("eris"), options?: { 
+  logging: boolean;
+  preventErrors: boolean;
+  enabled: string[];
+  disabled: string[];
+}): void;
 
 export = erisify;
