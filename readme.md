@@ -18,13 +18,17 @@ require("erisify")(Eris, { disabled: ["Message.tag"] });
 
 # teh thingies
 
-## Message
+| Name | Description |
+| ---- | ----------- |
+| `Message.guild` | Shortcute of `message.channel.guild` |
+| `Member.tag` | Combines teh `Member.username` & `Member.discriminator` |
+| `Member.hoistColor` | Hex color of the hoisted role of this member |
+| `Role.higherThan` | Compare 2 roles and check if the current role is higher |
+| `Role.isHighest` | A boolean telling you wether this role is the highest role in the guild |
+| `User.tag` | Combines teh `Member.username` & `Member.discriminator` |
 
-🌸 `guild` - Shortcute of `message.channel.guild`
-
-## User
-
-🌸 `tag` - Combines teh `User.username` & `User.discriminator`
+## MessageEmbed & MessageButton
+coming soon uwu
 
 # options yay
 

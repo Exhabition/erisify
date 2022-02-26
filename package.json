@@ -1,22 +1,27 @@
 {
   "name": "erisify",
-  "version": "0.1.0",
-  "description": "A few small additions to Eris to make life easier",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A few small additions to Eris to make life easier",
+  "license": "MIT",
+  "homepage": "https://github.com/Exhabition/erisify#readme",
+  "types": "./index.d.ts",
+  "author": {
+    "name": "Exhabition"
+  },
+  "bugs": {
+    "url": "https://github.com/Exhabition/erisify/issues"
+  },
+  "peerDependencies": {
+    "eris": ">=0.15.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Exhabition/erisify.git"
   },
-  "bugs": {
-    "url": "https://github.com/Exhabition/erisify/issues"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/Exhabition/erisify#readme",
-  "peerDependencies": {
-    "eris": ">=0.15.0"
-  },
-  "author": "Exhabition",
-  "license": "MIT"
+  "version": "0.1.3"
 }
