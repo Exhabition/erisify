@@ -163,7 +163,7 @@ class MessageEmbed {
 
         if (this.options.truncate || this.options.preventErrors) {
             tempFooter.text = truncate(text, 2048, this.options.truncate || "");
-            if (iconUrl) tempFooter.icon_url = truncate(icon_url, 2048, this.options.truncate || "");
+            if (iconUrl) tempFooter.icon_url = truncate(iconUrl, 2048, this.options.truncate || "");
         } else {
             if (text.length > 0 && text.length <= 2048) tempFooter.text = text;
             else throw new RangeError("[MessageEmbed.setFooter] 'text' must be a string longer than 0 characters and shorter than or equal to 2048 characters");
