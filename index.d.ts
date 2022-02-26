@@ -33,14 +33,35 @@ declare module "eris" {
     setFooter(text: string, iconUrl?: string): this;
     addField(name: string | number, value: string | number | string[], inline?: boolean): this;
     clearFields(): this;
+
+    author?: {
+      name?: string;
+      icon_url?: string;
+      url?: string;
+    };
+    color?: string;
+    title?: string;
+    url?: string;
+    description?: string;
+    thumbnail?: {
+      url: string;
+    };
+    image?: {
+      url: string;
+    }
+    timestamp?: Date | string;
+    footer?: {
+      text?: string;
+      icon_url?: string;
+    }
   }
 }
 
 declare function erisify(Eris: typeof import("eris"), options?: { 
-  logging: boolean;
-  preventErrors: boolean;
-  enabled: string[];
-  disabled: string[];
+  logging?: boolean;
+  preventErrors?: boolean;
+  enabled?: string[];
+  disabled?: string[];
 }): void;
 
 export = erisify;
