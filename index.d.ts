@@ -56,7 +56,7 @@ declare module "eris" {
     clearFields(): this;
 
     author?: EmbedAuthor;
-    color?: string;
+    color?: number;
     title?: string;
     url?: string;
     description?: string;
