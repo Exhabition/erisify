@@ -21,6 +21,21 @@ declare module "eris" {
     isHighest: boolean;
   }
 
+  interface EmbedAuthor {
+    name?: string;
+    icon_url?: string;
+    url?: string;
+  }
+
+  interface EmbedAsset {
+    url?: string;
+  }
+
+  interface EmbedFooter {
+    text?: string;
+    icon_url?: string;
+  }
+
   class MessageEmbed {
     setAuthor(name: string, iconUrl?: string, url?: string): this;
     setColor(color: string | number | string[]): this;
@@ -34,26 +49,15 @@ declare module "eris" {
     addField(name: string | number, value: string | number | string[], inline?: boolean): this;
     clearFields(): this;
 
-    author?: {
-      name?: string;
-      icon_url?: string;
-      url?: string;
-    };
+    author?: EmbedAuthor;
     color?: string;
     title?: string;
     url?: string;
     description?: string;
-    thumbnail?: {
-      url: string;
-    };
-    image?: {
-      url: string;
-    }
+    thumbnail?: EmbedAsset;
+    image?: EmbedAsset;
     timestamp?: Date | string;
-    footer?: {
-      text?: string;
-      icon_url?: string;
-    }
+    footer?: EmbedFooter;
   }
 }
 
