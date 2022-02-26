@@ -22,7 +22,7 @@ declare module "eris" {
   }
 
   interface EmbedAuthor {
-    name?: string;
+    name: string;
     icon_url?: string;
     url?: string;
   }
@@ -32,8 +32,14 @@ declare module "eris" {
   }
 
   interface EmbedFooter {
-    text?: string;
+    text: string;
     icon_url?: string;
+  }
+  
+  interface EmbedField {
+    name: string;
+    value: boolean;
+    inline?: boolean;
   }
 
   class MessageEmbed {
@@ -58,6 +64,7 @@ declare module "eris" {
     image?: EmbedAsset;
     timestamp?: Date | string;
     footer?: EmbedFooter;
+    fields: EmbedField[];
   }
 }
 
